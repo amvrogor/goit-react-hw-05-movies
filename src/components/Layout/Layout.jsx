@@ -1,7 +1,15 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { StyledNavLink, Header, List, ListItem, Main } from './Layout.styled';
+import {
+  StyledNavLink,
+  Header,
+  List,
+  ListItem,
+  Main,
+  Container,
+} from './Layout.styled';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <>
       <Header>
@@ -15,8 +23,14 @@ export const Layout = () => {
         </List>
       </Header>
       <Main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Container>
+            <Outlet />
+          </Container>
+        </Suspense>
       </Main>
     </>
   );
 };
+
+export default Layout;

@@ -1,10 +1,34 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { getReviewsAPI } from 'components/Services/GetApi';
+import { List, ListItem, ReviewTitle, ReviewText } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
-  // useEffect(() => {
-  // HTTP запрос, если нужно
-  // }, [])
 
-  return <div>Reviews</div>;
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    getReviewsAPI(movieId)
+      .then(data => {
+        setReviews(data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [movieId]);
+
+  return (
+    <List>
+      {reviews.length !== 0
+        ? reviews.map(review => (
+            <ListItem key={review.id}>
+              <ReviewTitle>Author: {review.author}</ReviewTitle>
+              <ReviewText>{review.content} </ReviewText>
+            </ListItem>
+          ))
+        : "We don't have any reviews for this movie"}
+    </List>
+  );
 };
+
+export default Reviews;

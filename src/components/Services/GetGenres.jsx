@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { getGenresAPI } from './GetApi';
 
-const getInitialGenres = () => {
-  const savedGenres = localStorage.getItem('savedGenres');
-
-  if (savedGenres !== null) {
-    const parsedGenres = JSON.parse(savedGenres);
-    return parsedGenres;
-  }
-  return {};
-};
-
 export const GetGenres = () => {
+  const getInitialGenres = () => {
+    const savedGenres = localStorage.getItem('savedGenres');
+    if (savedGenres !== null) {
+      const parsedGenres = JSON.parse(savedGenres);
+      return parsedGenres;
+    }
+    return {};
+  };
+
   const [genres, setGenres] = useState(getInitialGenres);
 
   useEffect(() => {
