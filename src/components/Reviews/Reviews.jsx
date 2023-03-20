@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getReviewsAPI } from 'components/Services/GetApi';
+import { getReviewsAPI } from 'Services/getApi';
 import { List, ListItem, ReviewTitle, ReviewText } from './Reviews.styled';
 
 const Reviews = () => {

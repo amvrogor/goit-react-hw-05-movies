@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getGenresAPI } from './GetApi';
+import { getGenresAPI } from './getApi';
 
 export const GetGenres = () => {
   const getInitialGenres = () => {

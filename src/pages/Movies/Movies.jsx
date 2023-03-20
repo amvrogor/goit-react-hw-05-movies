@@ -12,7 +12,7 @@ import {
   SearchFormInput,
 } from './Movies.styled';
 import { BsSearch } from 'react-icons/bs';
-import { getSearchMovieAPI } from 'components/Services/GetApi';
+import { getSearchMovieAPI } from 'Services/getApi';
 
 const Movies = () => {
   const location = useLocation();
@@ -54,7 +54,7 @@ const Movies = () => {
     form.reset();
   };
 
-  const LoadMore = () => {
+  const loadMore = () => {
     if (page < totalPages)
       setTimeout(() => {
         setPage(prev => prev + 1);
@@ -82,8 +82,8 @@ const Movies = () => {
         {movies.length !== 0 && (
           <InfiniteScroll
             dataLength={movies.length}
-            next={LoadMore}
-            hasMore={true}
+            next={loadMore}
+            hasMore={totalPages <= 1 ? false : true}
             loader={<p>Loading...</p>}
           >
             {movies.map(movie => (

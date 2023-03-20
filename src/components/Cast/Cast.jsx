@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCastAPI, IMAGE_BASE_URL } from 'components/Services/GetApi';
+import { getCastAPI, IMAGE_BASE_URL } from 'Services/getApi';
 import { Image, List, ListItem, Text } from './Cast.styled';
 
 const Cast = () => {

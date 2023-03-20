@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTrendingAPI } from 'components/Services/GetApi';
+import { getTrendingAPI } from 'Services/getApi';
 import { useLocation } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { LinkButton, List, ListItem } from './Home.styled';
@@ -23,7 +23,7 @@ const Home = () => {
       });
   }, [page]);
 
-  const LoadMore = () => {
+  const loadMore = () => {
     if (page < totalPages)
       setTimeout(() => {
         setPage(prev => prev + 1);
@@ -35,8 +35,8 @@ const Home = () => {
     <List>
       <InfiniteScroll
         dataLength={trendingMovies.length}
-        next={LoadMore}
-        hasMore={true}
+        next={loadMore}
+        hasMore={totalPages <= 1 ? false : true}
         px
         loader={<p>Loading...</p>}
       >
