@@ -10,7 +10,6 @@ export const SearchForm = styled.form`
   background-color: #fff;
   border: 1px solid #e7ecf2;
   border-radius: 5px;
-  overflow: hidden;
 `;
 
 export const SearchFormButton = styled.button`
@@ -61,27 +60,32 @@ export const SearchFormInput = styled.input`
 
 export const List = styled.ul`
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 
 export const ListItem = styled.li`
-  margin-bottom: 5px;
+  width: 250px;
 `;
 
 export const LinkButton = styled(Link)`
-  width: 600px;
   display: block;
-  padding: 5px;
   margin-right: auto;
   color: #3f3f3f;
   text-decoration: none;
-  border: 1px solid gray;
-  border-radius: 5px;
+
   :hover {
     opacity: 0.7;
   }
+`;
+
+export const Image = styled.img`
+  display: block;
+  width: 100%;
+  height: auto;
+  /* object-fit: cover; */
 `;

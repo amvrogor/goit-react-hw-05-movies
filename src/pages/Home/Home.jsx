@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { getTrendingAPI } from 'Services/getApi';
 import { useLocation } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { LinkButton, List, ListItem } from './Home.styled';
+import { IMAGE_BASE_URL } from 'Services/getApi';
+import { LinkButton, List, ListItem, Image } from './Home.styled';
 
 const Home = () => {
   const location = useLocation();
@@ -32,23 +33,31 @@ const Home = () => {
   };
 
   return (
-    <List>
-      <InfiniteScroll
-        dataLength={trendingMovies.length}
-        next={loadMore}
-        hasMore={totalPages <= 1 ? false : true}
-        px
-        loader={<p>Loading...</p>}
-      >
+    <InfiniteScroll
+      style={{ overflow: 'visible' }}
+      dataLength={trendingMovies.length}
+      next={loadMore}
+      hasMore={totalPages <= 1 || totalPages === page ? false : true}
+      loader={<p>Loading...</p>}
+    >
+      <List>
         {trendingMovies.map(movie => (
           <ListItem key={movie.id}>
             <LinkButton to={`movies/${movie.id}`} state={{ from: location }}>
+              <Image
+                src={
+                  movie.poster_path
+                    ? `${IMAGE_BASE_URL}${movie.poster_path}`
+                    : 'https://dummyimage.com/400x600/e0e0e0/ffffff.jpg&text=No+poster'
+                }
+                alt={movie.title}
+              />
               {movie.title}
             </LinkButton>
           </ListItem>
         ))}
-      </InfiniteScroll>
-    </List>
+      </List>
+    </InfiniteScroll>
   );
 };
 

@@ -52,6 +52,7 @@ export const StyledNavLink = styled(NavLink)`
 export const Main = styled.main`
   margin: 0;
   padding: 0 15px;
+  height: 100%;
 `;
 
 export const Container = styled.section`
@@ -59,10 +60,10 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 1200px;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0 auto;
   padding: 16px;
-  /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
   /* clip-path: inset(0px -15px 0px -15px); */
   /* background-color: #e7ecf2; */
 `;
